@@ -1,4 +1,4 @@
 defmodule InputVarTest do
-    use ExUnit.Case
-    doctest InputVars
-  end
+  use ExUnit.Case
+  doctest InputVar
+end
