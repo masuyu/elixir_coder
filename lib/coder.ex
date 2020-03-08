@@ -68,15 +68,20 @@ defmodule Coder do
   @doc """
   ## Examples
       iex> Coder.do_some_sums(10, 1, 3)
-      7
+      16
 
       iex> Coder.do_some_sums(20, 8, 10)
-      44
+      71
+
+      iex> Coder.do_some_sums(100,4,16)
+      4554
   """
   def do_some_sums(n, min, max) do
     1..n
-    |> Enum.map(&(Integer.digits(&1) |> Enum.sum()))
-    |> Enum.filter(&(min <= &1 && &1 <= max))
+    |> Enum.filter(&(min <= do_digits_sum(&1) and do_digits_sum(&1) <= max))
     |> Enum.sum()
+  end
+  defp do_digits_sum(a) do
+    a |> Integer.digits() |> Enum.sum()
   end
 end
