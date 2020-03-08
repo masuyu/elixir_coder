@@ -110,4 +110,24 @@ defmodule Coder do
   def do_kagami_mochi(l) do
     l |> Enum.uniq() |> length()
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_otoshidama(10, 80000)
+      "6 4 0"
+
+      iex> Coder.do_otoshidama(20, 89000)
+      "1 15 4"
+  """
+  def do_otoshidama(n, yen) do
+    for i <- 0..n,
+        j <- 0..(n - i) do
+      {i, j, n-i-j}
+    end
+    |> Enum.filter(fn {i, j, k} -> i*10000 + j*5000 + k*1000 == yen end)
+    |> Enum.at(0, {-1, -1, -1})
+    |> case do
+      {a, b, c} -> "#{a} #{b} #{c}"
+    end
+  end
 end

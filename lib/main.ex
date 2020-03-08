@@ -47,4 +47,9 @@ defmodule Main do
     l = InputVar.get_int()
     Coder.do_kagami_mochi(l)
   end
+
+  def otoshidama() do
+    [n, yen] = InputList.get_int()
+    Coder.do_otoshidama(n, yen)
+  end
 end
