@@ -21,4 +21,12 @@ defmodule Main do
     a = InputVar.get_int()
     Coder.do_shift_only(a)
   end
+
+  def coins() do
+    a = Input.get_int()
+    b = Input.get_int()
+    c = Input.get_int()
+    x = Input.get_int()
+    Coder.do_coins(a, b, c, x)
+  end
 end
