@@ -42,8 +42,8 @@ defmodule Coder do
     do_div_by_two(l, 0)
   end
   defp do_div_by_two(l, r) do
-    case Enum.all?(l, fn(n) -> rem(n, 2) == 0 end) do
-      :true -> l |> Enum.map(fn(n) -> div(n, 2) end) |> do_div_by_two(r+1)
+    case Enum.all?(l, &(rem(&1, 2) == 0)) do
+      :true -> do_div_by_two(Enum.map(l, &(div(&1, 2))), r+1)
       _ -> r
     end
   end
