@@ -52,4 +52,9 @@ defmodule Main do
     [n, yen] = InputList.get_int()
     Coder.do_otoshidama(n, yen)
   end
+
+  def daydream() do
+    s = Input.get_str()
+    Coder.do_daydream(s)
+  end
 end
