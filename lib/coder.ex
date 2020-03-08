@@ -26,4 +26,26 @@ defmodule Coder do
   def do_plancing_marbles(a) do
     a |> String.codepoints |> Enum.count(fn(x) -> x == "1" end)
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_shift_only([2, 4, 6])
+      1
+
+      iex> Coder.do_shift_only([8, 16, 12])
+      2
+
+      iex> Coder.do_shift_only([8, 24, 40])
+      3
+  """
+  def do_shift_only(l) do
+    do_div_by_two(l, Enum.count(l), 0)
+  end
+  defp do_div_by_two(l, c, r) do
+    case do_shift_only_even_count(l) == c do
+      :true -> l |> Enum.map(fn(n) -> div(n, 2) end) |> do_div_by_two(c, r+1)
+      _ -> r
+    end
+  end
+  defp do_shift_only_even_count(l), do: l |> Enum.count(fn(n) -> rem(n, 2) == 0 end)
 end

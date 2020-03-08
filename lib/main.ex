@@ -16,4 +16,9 @@ defmodule Main do
     a = Input.get_str()
     Coder.do_plancing_marbles(a)
   end
+
+  def shift_only() do
+    a = InputVar.get_int()
+    Coder.do_shift_only(a)
+  end
 end
