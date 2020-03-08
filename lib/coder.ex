@@ -97,4 +97,17 @@ defmodule Coder do
     dsc_ls = card_list |> Enum.sort(&(&1 >= &2))
     (dsc_ls |> Enum.take_every(2) |> Enum.sum()) - (dsc_ls |> Enum.drop_every(2) |> Enum.sum())
   end
+
+
+  @doc """
+  ## Examples
+      iex> Coder.do_kagami_mochi([10, 11, 3, 4, 5])
+      5
+
+      iex> Coder.do_kagami_mochi([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      10
+  """
+  def do_kagami_mochi(l) do
+    l |> Enum.uniq() |> length()
+  end
 end

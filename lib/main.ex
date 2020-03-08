@@ -42,4 +42,9 @@ defmodule Main do
     l = InputList.get_int()
     Coder.do_card_game_for_two(n, l)
   end
+
+  def kagami_mochi() do
+    l = InputVar.get_int()
+    Coder.do_kagami_mochi(l)
+  end
 end
