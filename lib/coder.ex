@@ -39,13 +39,12 @@ defmodule Coder do
       3
   """
   def do_shift_only(l) do
-    do_div_by_two(l, Enum.count(l), 0)
+    do_div_by_two(l, 0)
   end
-  defp do_div_by_two(l, c, r) do
-    case do_shift_only_even_count(l) == c do
-      :true -> l |> Enum.map(fn(n) -> div(n, 2) end) |> do_div_by_two(c, r+1)
+  defp do_div_by_two(l, r) do
+    case Enum.all?(l, fn(n) -> rem(n, 2) == 0 end) do
+      :true -> l |> Enum.map(fn(n) -> div(n, 2) end) |> do_div_by_two(r+1)
       _ -> r
     end
   end
-  defp do_shift_only_even_count(l), do: l |> Enum.count(fn(n) -> rem(n, 2) == 0 end)
 end
