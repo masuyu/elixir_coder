@@ -29,4 +29,11 @@ defmodule Main do
     x = Input.get_int()
     Coder.do_coins(a, b, c, x)
   end
+
+  def some_sums() do
+    n = Input.get_int()
+    a = Input.get_int()
+    b = Input.get_int()
+    Coder.do_some_sums(n, a, b)
+  end
 end

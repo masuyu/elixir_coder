@@ -64,4 +64,19 @@ defmodule Coder do
     end
     |> Enum.count(&(&1 == x))
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_some_sums(10, 1, 3)
+      7
+
+      iex> Coder.do_some_sums(20, 8, 10)
+      44
+  """
+  def do_some_sums(n, min, max) do
+    1..n
+    |> Enum.map(&(Integer.digits(&1) |> Enum.sum()))
+    |> Enum.filter(&(min <= &1 && &1 <= max))
+    |> Enum.sum()
+  end
 end
