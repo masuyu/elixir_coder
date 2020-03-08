@@ -84,4 +84,17 @@ defmodule Coder do
   defp do_digits_sum(a) do
     a |> Integer.digits() |> Enum.sum()
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_card_game_for_two(5, [1, 2, 3, 4, 5])
+      3
+
+      iex> Coder.do_card_game_for_two(10, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+      5
+  """
+  def do_card_game_for_two(_, card_list) do
+    dsc_ls = card_list |> Enum.sort(&(&1 >= &2))
+    (dsc_ls |> Enum.take_every(2) |> Enum.sum()) - (dsc_ls |> Enum.drop_every(2) |> Enum.sum())
+  end
 end

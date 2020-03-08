@@ -36,4 +36,10 @@ defmodule Main do
     b = Input.get_int()
     Coder.do_some_sums(n, a, b)
   end
+
+  def card_game_for_two() do
+    n = Input.get_int()
+    l = InputList.get_int()
+    Coder.do_card_game_for_two(n, l)
+  end
 end
