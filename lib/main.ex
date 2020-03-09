@@ -8,53 +8,54 @@ defmodule Main do
   calling product
   """
   def product() do
-    [a, b] = InputList.get_int()
+    [a, b] = SI.lst(:int)
     Coder.do_product(a, b)
   end
 
   def plancing_marbles() do
-    a = Input.get_str()
+    a = SI.val(:str)
     Coder.do_plancing_marbles(a)
   end
 
   def shift_only() do
-    a = InputVar.get_int()
+    n = SI.val(:int)
+    a = SI.lst(:int)
     Coder.do_shift_only(a)
   end
 
   def coins() do
-    a = Input.get_int()
-    b = Input.get_int()
-    c = Input.get_int()
-    x = Input.get_int()
+    a = SI.val(:int)
+    b = SI.val(:int)
+    c = SI.val(:int)
+    x = SI.val(:int)
     Coder.do_coins(a, b, c, x)
   end
 
   def some_sums() do
-    n = Input.get_int()
-    a = Input.get_int()
-    b = Input.get_int()
+    n = SI.val(:int)
+    a = SI.val(:int)
+    b = SI.val(:int)
     Coder.do_some_sums(n, a, b)
   end
 
   def card_game_for_two() do
-    n = Input.get_int()
-    l = InputList.get_int()
+    n = SI.val(:int)
+    l = SI.lst(:int)
     Coder.do_card_game_for_two(n, l)
   end
 
   def kagami_mochi() do
-    l = InputVar.get_int()
+    l = SI.by_iter(:int)
     Coder.do_kagami_mochi(l)
   end
 
   def otoshidama() do
-    [n, yen] = InputList.get_int()
+    [n, yen] = SI.lst(:int)
     Coder.do_otoshidama(n, yen)
   end
 
   def daydream() do
-    s = Input.get_str()
+    s = SI.val(:str)
     Coder.do_daydream(s)
   end
 end
