@@ -58,4 +58,9 @@ defmodule Main do
     s = SI.val(:str)
     Coder.do_daydream(s)
   end
+
+  def traveling() do
+    l = SI.multi(:int)
+    Coder.do_traveling(l)
+  end
 end

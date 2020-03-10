@@ -149,4 +149,24 @@ defmodule Coder do
       :true -> :NO
     end
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_traveling([[1, 1, 0], [5, 2, 1], [10, 2, 6]])
+      :Yes
+
+      iex> Coder.do_traveling([[100,100,0], [102,0,0]])
+      :No
+  """
+  def do_traveling(l) do
+    Enum.map_reduce(l, [0, 0, 0], fn [t2, x2, y2], [t1, x1, y1] ->
+      {[t2 - t1, abs(x2 - x1) + abs(y2 - y1)], [t2, x2, y2]}
+    end)
+    |> elem(0)
+    |> Enum.all?(fn [dt, dist] -> dt >= dist and rem(dist, 2) == rem(dt, 2) end)
+    |> case do
+      true -> :Yes
+      _ -> :No
+    end
+  end
 end
