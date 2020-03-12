@@ -63,4 +63,13 @@ defmodule Main do
     l = SI.multi(:int)
     Coder.do_traveling(l)
   end
+
+  def sock_merchant() do
+    n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
+    l = IO.read(:stdio, :line) |> String.split |> Enum.map(&String.to_integer/1)
+    case n == Enum.count(l) do
+      :true -> Coder.do_sock_merchant(l)
+      :false -> :false
+    end
+  end
 end

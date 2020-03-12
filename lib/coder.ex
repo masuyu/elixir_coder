@@ -169,4 +169,26 @@ defmodule Coder do
       _ -> :No
     end
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_sock_merchant([1, 2, 1, 2, 1, 2, 3])
+      3
+
+      iex> Coder.do_sock_merchant([10, 20, 10, 10, 30, 20, 40])
+      2
+  """
+  def do_sock_merchant(l) do
+    l |> Enum.sort(&(&1 < &2)) |> rec_pair([])
+  end
+  defp rec_pair([], r), do: r |> Enum.count
+  defp rec_pair([head|tail], r) do
+    case Enum.member?(tail, head) do
+      :false -> rec_pair(tail, r)
+      :true -> rec_pair(
+        tl(tail),
+        [{head, hd(tail)} | r]
+      )
+    end
+  end
 end
