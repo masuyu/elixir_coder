@@ -173,10 +173,10 @@ defmodule Coder do
   @doc """
   ## Examples
       iex> Coder.do_sock_merchant([1, 2, 1, 2, 1, 2, 3])
-      3
-
-      iex> Coder.do_sock_merchant([10, 20, 10, 10, 30, 20, 40])
       2
+
+      iex> Coder.do_sock_merchant([10, 20, 10, 10, 30, 20, 30])
+      3
   """
   def do_sock_merchant(l) do
     l |> Enum.sort(&(&1 < &2)) |> rec_pair([])
@@ -191,4 +191,58 @@ defmodule Coder do
       )
     end
   end
+
+  @doc """
+  ## Examples
+      iex> Coder.do_jumping_on_the_clouds([0, 0, 1, 0, 0, 1, 0])
+      4
+
+      iex> Coder.do_jumping_on_the_clouds([0, 0, 0, 0, 0])
+      2
+
+      iex> Coder.do_jumping_on_the_clouds([0, 1, 1, 0, 0])
+      :false
+
+      iex> Coder.do_jumping_on_the_clouds([1, 0, 0, 0, 0])
+      :false
+
+      iex> Coder.do_jumping_on_the_clouds([0, 0, 0, 0, 1])
+      :false
+
+      iex> Coder.do_jumping_on_the_clouds([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+      5
+
+      iex> Coder.do_jumping_on_the_clouds([0, 0, 0, 1, 0, 0])
+      3
+  """
+  def do_jumping_on_the_clouds([head|tail]) do
+    case head do
+      0 -> do_count(tail, 0, 0, 0)
+      1 -> :false
+    end
+  end
+  defp do_count([head|tail], c, t, d) when d == 1 do
+    IO.inspect([tail, c, t, d])
+    case head do
+      0 -> do_count(tail, c+1, 0, 0)
+      1 -> :false
+    end
+  end
+  defp do_count([head|tail], c, t, d) when t == 2 do
+    IO.inspect([tail, c, t, d])
+    case head do
+      0 -> do_count(tail, c, 1, 0)
+      1 -> do_count(tail, c-1, 0, d+1)
+    end
+  end
+  defp do_count([head|tail], c, t, d) do
+    IO.inspect([tail, c, t, d])
+    case head do
+      0 -> do_count(tail, c+1, t+1, 0)
+      1 -> do_count(tail, c, 0, d+1)
+    end
+  end
+  defp do_count([], _, _, d) when d == 1, do: :false
+  defp do_count([], c, t, _) when t == 2, do: c-1
+  defp do_count([], c, _, _), do: c
 end

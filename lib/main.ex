@@ -72,4 +72,13 @@ defmodule Main do
       :false -> :false
     end
   end
+
+  def jumping_on_the_clouds() do
+    n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
+    l = IO.read(:stdio, :line) |> String.split |> Enum.map(&String.to_integer/1)
+    case n == Enum.count(l) do
+      :true -> Coder.do_jumping_on_the_clouds(l)
+      :false -> :false
+    end
+  end
 end
