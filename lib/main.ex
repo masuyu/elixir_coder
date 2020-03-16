@@ -81,4 +81,10 @@ defmodule Main do
       :false -> :false
     end
   end
+
+  def repeated_string() do
+    s = IO.read(:stdio, :line) |> String.trim
+    n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
+    Coder.do_repeated_string(s, n)
+  end
 end

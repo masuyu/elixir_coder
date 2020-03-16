@@ -222,21 +222,18 @@ defmodule Coder do
     end
   end
   defp do_count([head|tail], c, t, d) when d == 1 do
-    IO.inspect([tail, c, t, d])
     case head do
       0 -> do_count(tail, c+1, 0, 0)
       1 -> :false
     end
   end
   defp do_count([head|tail], c, t, d) when t == 2 do
-    IO.inspect([tail, c, t, d])
     case head do
       0 -> do_count(tail, c, 1, 0)
       1 -> do_count(tail, c-1, 0, d+1)
     end
   end
   defp do_count([head|tail], c, t, d) do
-    IO.inspect([tail, c, t, d])
     case head do
       0 -> do_count(tail, c+1, t+1, 0)
       1 -> do_count(tail, c, 0, d+1)
@@ -245,4 +242,21 @@ defmodule Coder do
   defp do_count([], _, _, d) when d == 1, do: :false
   defp do_count([], c, t, _) when t == 2, do: c-1
   defp do_count([], c, _, _), do: c
+
+  @doc """
+  ## Examples
+      iex> Coder.do_repeated_string("aba", 10)
+      7
+
+      iex> Coder.do_repeated_string("a", 1000000000000)
+      1000000000000
+  """
+  def do_repeated_string(s, n) do
+    count_quotient(s, n) + count_rem(s, n)
+  end
+  defp count_quotient(s, n), do: s |> String.codepoints |> Enum.filter(&(&1 == "a")) |> Enum.count |> cal_repeated_string1(div(n, String.length(s)))
+  defp cal_repeated_string1(a_count, quotient), do: a_count * quotient
+  defp count_rem(s, n), do: s |> String.codepoints |> cal_repeated_string2(rem(n, String.length(s)))
+  defp cal_repeated_string2(ls, remainder) when remainder > 0, do: ls |> Enum.slice(0, remainder) |> Enum.filter(&(&1 == "a")) |> Enum.count
+  defp cal_repeated_string2(_, _), do: 0
 end
