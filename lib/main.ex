@@ -64,6 +64,7 @@ defmodule Main do
     Coder.do_traveling(l)
   end
 
+  # from HackerRank
   def sock_merchant() do
     n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
     l = IO.read(:stdio, :line) |> String.split |> Enum.map(&String.to_integer/1)
@@ -73,6 +74,7 @@ defmodule Main do
     end
   end
 
+  # from HackerRank
   def jumping_on_the_clouds() do
     n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
     l = IO.read(:stdio, :line) |> String.split |> Enum.map(&String.to_integer/1)
@@ -82,14 +84,23 @@ defmodule Main do
     end
   end
 
+  # from HackerRank
   def repeated_string() do
     s = IO.read(:stdio, :line) |> String.trim
     n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
     Coder.do_repeated_string(s, n)
   end
 
+  # from HackerRank
   def loops do
     i = IO.gets("") |> String.trim |> String.to_integer
     Coder.do_loops(i)
+  end
+
+  # from HackerRank
+  def lets_review do
+    i = IO.gets("") |> String.trim |> String.to_integer
+    l = for _ <- 1..i, do: IO.gets("") |> String.trim
+    l |> Enum.map(&(Coder.do_lets_review(&1)))
   end
 end

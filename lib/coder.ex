@@ -263,4 +263,8 @@ defmodule Coder do
   def do_loops(i) do
     1..10 |> Enum.map(&(IO.puts("#{i} x #{&1} = #{i * &1}")))
   end
+
+  def do_lets_review(s) do
+    IO.puts("#{s |> String.codepoints |> Enum.take_every(2) |> Enum.join("")} #{s |> String.codepoints |> Enum.drop_every(2) |> Enum.join("")}")
+  end
 end
