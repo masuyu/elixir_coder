@@ -259,4 +259,8 @@ defmodule Coder do
   defp count_rem(s, n), do: s |> String.codepoints |> cal_repeated_string2(rem(n, String.length(s)))
   defp cal_repeated_string2(ls, remainder) when remainder > 0, do: ls |> Enum.slice(0, remainder) |> Enum.filter(&(&1 == "a")) |> Enum.count
   defp cal_repeated_string2(_, _), do: 0
+
+  def do_loops(i) do
+    1..10 |> Enum.map(&(IO.puts("#{i} x #{&1} = #{i * &1}")))
+  end
 end

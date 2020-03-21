@@ -87,4 +87,9 @@ defmodule Main do
     n = IO.read(:stdio, :line) |> String.trim |> String.to_integer
     Coder.do_repeated_string(s, n)
   end
+
+  def loops do
+    i = IO.gets("") |> String.trim |> String.to_integer
+    Coder.do_loops(i)
+  end
 end
