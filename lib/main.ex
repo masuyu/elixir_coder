@@ -103,4 +103,20 @@ defmodule Main do
     l = for _ <- 1..i, do: IO.gets("") |> String.trim
     l |> Enum.map(&(Coder.do_lets_review(&1)))
   end
+
+  # from HackerRank
+  def dictionaries do
+    i = IO.gets("")
+      |> String.trim
+      |> String.to_integer
+    map1 = Enum.reduce(1..i, %{}, fn _i, acc ->
+      IO.gets("")
+        |> String.trim
+        |> String.split
+        |> Enum.chunk_every(2)
+        |> Map.new(fn [k, v] -> {String.to_atom(k), v} end)
+        |> Map.merge(acc)
+    end)
+    Coder.do_dictionaries(map1)
+  end
 end

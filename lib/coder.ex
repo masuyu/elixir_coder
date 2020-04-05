@@ -267,4 +267,16 @@ defmodule Coder do
   def do_lets_review(s) do
     IO.puts("#{s |> String.codepoints |> Enum.take_every(2) |> Enum.join("")} #{s |> String.codepoints |> Enum.drop_every(2) |> Enum.join("")}")
   end
+
+  def do_dictionaries(map1) do
+    Enum.each(IO.stream(:stdio, :line),
+      fn x ->
+        x = String.trim(x) |> String.to_atom
+        case Map.get(map1, x) do
+          :nil -> IO.puts("Not found")
+          v -> IO.puts("#{x}=#{v}")
+        end
+      end
+    )
+  end
 end
