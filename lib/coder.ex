@@ -279,4 +279,16 @@ defmodule Coder do
       end
     )
   end
+
+  def do_resursion3(i) do
+    factorial(i, 1)
+  end
+
+  def factorial(0, acc) do
+    IO.puts(acc)
+  end
+
+  def factorial(i, acc) do
+    factorial(i-1, acc*i)
+  end
 end

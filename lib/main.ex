@@ -119,4 +119,12 @@ defmodule Main do
     end)
     Coder.do_dictionaries(map1)
   end
+
+  # from HackerRank
+  def resursion3 do
+    i = IO.gets("")
+    |> String.trim
+    |> String.to_integer
+    Coder.do_resursion3(i)
+  end
 end
