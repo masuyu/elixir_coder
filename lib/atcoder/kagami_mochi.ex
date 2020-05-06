@@ -17,7 +17,7 @@ defmodule KagamiMochi do
 
   def exec() do
     n = IO.gets("") |> String.trim |> String.to_integer
-    l = for _ <- 1..n, do: IO.gets("") |> i
+    l = for _ <- 1..n, do: IO.gets("") |> String.trim |> String.to_integer
     do_kagami_mochi(l)
   end
 end
